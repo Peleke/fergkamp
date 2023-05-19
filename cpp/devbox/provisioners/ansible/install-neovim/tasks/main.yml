@@ -1,0 +1,10 @@
+---
+# tasks file for install-tmux
+- name: Add Neovim PPA
+  ansible.builtin.apt_repository:
+    repo: ppa:neovim-ppa/stable
+
+- name: Install Neovim
+  ansible.builtin.package:
+    name: neovim
+    state: present

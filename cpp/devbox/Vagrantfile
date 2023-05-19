@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "jcaraballo/ubuntu-desktop-jammy"
+  config.vm.box_check_update = true
+
+  config.vm.synced_folder "./", "/vagrant-data"
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+    vb.memory = "4096"
+  end
+
+  config.vm.provision "shell", path: "provisioners/shell/install_ansible.sh"
+  config.vm.provision "ansible_local", playbook: "provisioners/ansible/main.yml"
+end

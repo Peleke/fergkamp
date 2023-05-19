@@ -1,0 +1,26 @@
+---
+- name: Install Tmux Dependencies
+  ansible.builtin.package:
+    name: "{{ tmux_dependencies }}"
+    state: present
+
+- name: Download Tmux GZip
+  ansible.builtin.get_url:
+    url: "{{ tmux_download_url }}"
+    dest: "{{ tmux_gzip_dir }}"
+
+- name: Create Tmux Extraction Target
+  ansible.builtin.file:
+    path: "{{ tmux_gzip_dir }}/{{ tmux_file_name }}"
+    state: directory
+
+- name: Extract Tmux
+  ansible.builtin.unarchive:
+    src: "{{ tmux_gzip_dir }}/{{ tmux_file_name }}.{{ tmux_file_extension}}"
+    dest: "/tmp/{{tmux_file_name}}"
+
+- name: Install Tmux
+  ansible.builtin.shell: |
+    cd /tmp/tmux-3.3a/tmux-3.3a
+    ./configure
+    make && make install

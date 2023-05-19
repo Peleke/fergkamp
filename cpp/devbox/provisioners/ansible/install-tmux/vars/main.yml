@@ -1,0 +1,10 @@
+tmux_gzip_dir: /tmp
+tmux_download_url: https://github.com/tmux/tmux/releases/download/3.3a/tmux-3.3a.tar.gz
+tmux_file_name: tmux-3.3a
+tmux_file_extension: tar.gz
+tmux_dependencies:
+  - libevent-dev
+  - ncurses-dev
+  - build-essential
+  - bison
+  - pkg-config
