@@ -2,9 +2,22 @@
 # tasks file for install-tmux
 - name: Add Neovim PPA
   ansible.builtin.apt_repository:
-    repo: ppa:neovim-ppa/stable
+    repo: ppa:neovim-ppa/unstable
 
-- name: Install Neovim
+- name: Install Neovim & Dependencies
   ansible.builtin.package:
-    name: neovim
+    name:
+      - neovim
+      - python3-neovim
+      - npm # required for Neovim plugins, giz., `mason-lspconfig`
     state: present
+
+- name: Create Config Directory
+  ansible.builtin.file:
+    path: /home/vagrant/.config/nvim
+    state: directory
+
+- name: Clone Config
+  ansible.builtin.git:
+    repo: https://github.com/Peleke/neovim-boilerplate
+    dest: /home/vagrant/.config/nvim

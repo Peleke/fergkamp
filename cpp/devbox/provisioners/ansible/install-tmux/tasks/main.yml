@@ -24,3 +24,14 @@
     cd /tmp/tmux-3.3a/tmux-3.3a
     ./configure
     make && make install
+
+- name: Clone Tmux Configuration
+  ansible.builtin.git:
+    repo: https://github.com/Peleke/tmux-configuration
+    dest: /tmp/tmux-configuration
+
+- name: Install Tmux Configuration
+  ansible.builtin.copy:
+    remote_src: true
+    src: /tmp/tmux-configuration/.tmux.conf
+    dest: /home/vagrant/.tmux.conf
