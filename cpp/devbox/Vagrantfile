@@ -2,10 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  # Non-ideal but works
+  config.ssh.username = "vagrant"
+  config.ssh.password = "vagrant"
   config.vm.box = "jcaraballo/ubuntu-desktop-jammy"
   config.vm.box_check_update = true
 
-  config.vm.synced_folder "./", "/vagrant-data"
+  config.vm.synced_folder "../", "/vagrant-data"
   config.vm.provider "virtualbox" do |vb|
     vb.gui = true
     vb.memory = "4096"
