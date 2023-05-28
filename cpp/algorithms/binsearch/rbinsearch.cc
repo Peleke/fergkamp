@@ -52,10 +52,10 @@ int main() {
     double result = rbinary_search(array, length, i, 0, length - 1);
     if (result == -1) {
       // Should miss -1, 0, 11, 12
-      cout << "SEARCH MISSED for " << i << "\n";
+      std::cout << "SEARCH MISSED for " << i << "\n";
     } else {
       // Should hit 1-10 (cf. `array`)
-      cout << "SEARCH HIT: " << result << "\n";
+      std::cout << "SEARCH HIT: " << result << "\n";
     }
   }
 }
