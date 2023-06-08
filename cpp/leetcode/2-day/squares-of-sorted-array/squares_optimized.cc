@@ -10,7 +10,7 @@
  * Space Complexity remains O(n), due to the allocation of a secondary vector with size identical to the input.
  */
 
-void show_vector(const std::vector<int> vec) {
+void showVector(const std::vector<int> vec) {
   for (auto val : vec) {
     std::cout << val << ' ';
   }
@@ -52,5 +52,5 @@ auto sortedSquares(const std::vector<int>& nums) -> std::vector<int> {
 
 auto main() -> int {
   std::vector<int> nums{ -3, -1, 0, 1, 2, 3, 4, 5 };
-  show_vector(sortedSquares(nums));
+  showVector(sortedSquares(nums));
 }
