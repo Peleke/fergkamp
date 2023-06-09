@@ -1,6 +1,5 @@
 #include <iostream>
 #include<vector>
-using namespace std;
 
 /*
  * This solution performs a search to identify the boundary between negative and positive numbers,
@@ -10,7 +9,7 @@ using namespace std;
  * Time complexity is O(n). We perform an O(n) search for the boundary, and then an O(n) 
  * "split linear" scan along subarrays to compute the squares. One could theoretically use
  * binary search to reduce the constant term. This is omitted, however, as it's a naive
- * Optimization: There is a way to skip the boundary search entirely (see `squares_optimized.cc`.)
+ * optimization: There is a way to skip the boundary search entirely (see `squares_optimized.cc`.)
  * 
  * Also note that there are several ad-hoc checks for monotonic positivity, null length, etc.
  * These _can_ be eliminated, but again, these optimizations are omitted, because there is a

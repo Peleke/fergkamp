@@ -30,11 +30,12 @@ auto square(const int x) -> int {
 
 auto sortedSquares(const std::vector<int>& nums) -> std::vector<int> {
   // initialize a new vector with exact size to avoid underlying resize
-  std::vector<int> output(nums.size());
+  std::vector<int> output;
+  output.reserve(nums.size());
   // init front, back, and insertion pointers...
-  auto lo{ 0 };
-  auto hi { int(nums.size()) - 1 };
-  auto insert_position{ int(nums.size() - 1) };
+  unsigned int lo = 0;
+  unsigned int hi = int(nums.size()) - 1;
+  unsigned int insert_position = int(nums.size() - 1);
   // until pointers cross...
   while (lo <= hi) {
     // ...insert the number producing the larger square and insert, starting at the back
