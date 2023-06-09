@@ -2,20 +2,29 @@ package main
 
 import "fmt"
 
-func reverseString(s []byte) {
-	// init pointers to ends of slice
-	lo := 0
-	hi := len(s) - 1
-	// swap position of elements as we walk towards middle
-	for lo < hi {
-		s[lo], s[hi] = s[hi], s[lo]
-		lo += 1
-		hi -= 1
+func reverseWord(s []rune, start, end int) {
+	for start < end {
+		s[start], s[end] = s[end], s[start]
+		start += 1
+		end -= 1
 	}
 }
 
+func reverseWords(s string) string {
+	runes := []rune(s)
+	begindex := 0
+	for index, value := range s {
+		if value == ' ' {
+			reverseWord(runes, begindex, index-1)
+			begindex = index + 1
+		} else if index == len(s)-1 {
+			reverseWord(runes, begindex, index)
+		}
+	}
+	return string(runes)
+}
+
 func main() {
-	byte_string := []byte{'s', 'a', 'l', 'v', 'e', ' ', 'm', 'u', 'n', 'd', 'e'}
-	reverseString((byte_string))
-	fmt.Println(string(byte_string[:]))
+	s := "salve, munde"
+	fmt.Println(reverseWords(s))
 }
